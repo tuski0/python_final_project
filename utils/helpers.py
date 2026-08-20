@@ -37,4 +37,5 @@ def get_select(prom_message):
             print('정수만 입력해주세요')
 
 
-
+def pause_and_continue():
+    input("\n메인 메뉴로 돌아가려면 Enter를 누르세요...")

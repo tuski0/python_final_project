@@ -1,5 +1,5 @@
 from models.specialized_books import Ebook, PaperBook
-from utils.helpers import get_string, get_integer, get_float, get_select
+from utils.helpers import get_string, get_integer, get_float, get_select, pause_and_continue
 import datetime as dt
 
 def main():
@@ -51,11 +51,12 @@ def main():
                 else :
                     print('1, 2만 입력해주세요')
 
+            pause_and_continue()
         elif select == 2:
             print('2. 전체 도서 조회')
             for book in books_catalog.values():
                 print(book)
-
+            pause_and_continue()
         elif select == 3:
             print('3. 도서 검색')
             
@@ -97,6 +98,7 @@ def main():
             else :
                 print('정보가 존재하지 않습니다.')
 
+            pause_and_continue()
         elif select == 4:
             print('도서 대여 / 반납 처리')
             key = get_string('isbn을 입력해주세요 : ')
@@ -134,6 +136,8 @@ def main():
             else :
                 print('존재하지 않는 도서 입니다.')
 
+            pause_and_continue()
+
         elif select == 5:
             print('5. 통계 조회')
             
@@ -148,9 +152,9 @@ def main():
             if choice == 1 :
                 # 전체 조회 하기
                 print('전체 통계 조회')
-                for book in stats :
+                for i, book in enumerate(stats, start=1) :
                     borrow = '대출' if not book[2] else '반납'
-                    print(f'제목 : {book[0]}, ISBN : {book[1]}, 요청 사항 : {borrow}, 처리 시간 : {book[3]}')
+                    print(f'{i}. 제목 : {book[0]}, ISBN : {book[1]}, 요청 사항 : {borrow}, 처리 시간 : {book[3]}')
 
             elif choice == 2:
                 # 월별 조회 하기
@@ -158,15 +162,15 @@ def main():
                 find = get_integer('1 ~ 12 사이의 숫자를 입력해주세요 : ')
 
                 month = [ book for book in stats if int(book[3][5:7]) == find ]
-
+                month_best = []
                 if len(month) > 0 :
                     print(f'{find}월 기록')
-                    for book in month:
-                        
+                    for i, book in enumerate(month, start=1):
                         borrow = '대출' if not book[2] else '반납'
-                        print(f'제목 : {book[0]}, ISBN : {book[1]}, 요청 사항 : {borrow}, 처리 시간 : {book[3]}')
+                        print(f'{i}. 제목 : {book[0]}, ISBN : {book[1]}, 요청 사항 : {borrow}, 처리 시간 : {book[3]}')
                 else :
                     print('조회되는 정보가 없습니다.')
+                    
 
             elif choice == 3:
                 # 책 제목 별 조회하기
@@ -176,15 +180,17 @@ def main():
                 found_books = [ book for book in stats if keyword in book[0] ]
 
                 if found_books:
-                    for book in found_books:
+                    for i, book in enumerate(found_books, start=1):
                         borrow = '대출' if not book[2] else '반납'
-                        print(f'제목 : {book[0]}, ISBN : {book[1]}, 요청 사항 : {borrow}, 처리 시간 : {book[3]}')
+                        print(f'{i}. 제목 : {book[0]}, ISBN : {book[1]}, 요청 사항 : {borrow}, 처리 시간 : {book[3]}')
                 else :
                     print('조회 되는 정보가 없습니다.')
 
             else :
                 print('1 ~ 3 사이의 숫자를 입력해주세요 !!!!!')
 
+            pause_and_continue()
+            
         elif select == 6:
             print('종료 합니다.')
             break
