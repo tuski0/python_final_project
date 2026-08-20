@@ -21,18 +21,23 @@ uv run main.py
 
 ### 실행 화면
 
+<h2> 실행 , 도서 등록 </h2>
 <img src='./img/run_and_add_book.gif'>
 
+<h2> 도서 전체 조회 </h2>
 <img src='./img/book_all_find.gif'>
 
+<h2> 도서 상세 검색 </h2>
 <img src='./img/book_detail_find.gif'>
 
+<h2> 도서 대출 / 반납 </h2>
 <img src='./img/book_rent_return.gif'>
 
+<h2> 도서 통계 조회 </h2>
 <img src='./img/book_stats.gif'>
 
+<h2> 프로그램 종료 </h2>
 <img src='./img/program_exit.gif'>
-
 
 ### 주요 기능
 
